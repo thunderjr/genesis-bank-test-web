@@ -1,5 +1,7 @@
+import "react-toastify/dist/ReactToastify.min.css";
 import "@/styles/globals.css";
 
+import { ToastContainer } from "react-toastify";
 import { Inconsolata } from "next/font/google";
 import type { AppProps } from "next/app";
 
@@ -15,6 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <div className={MainFont.className}>
       <NavBar />
       <Component {...pageProps} />
+      <ToastContainer />
     </div>
   );
 }
