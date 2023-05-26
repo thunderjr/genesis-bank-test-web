@@ -1,14 +1,8 @@
-import mongoose, { type Document, type Model } from "mongoose";
+import mongoose, { type Model } from "mongoose";
 
-export interface IProduct extends Document {
-  name: string;
-  description: string;
-  price: number;
-  image?: string;
-  category: string;
-}
+import type { IProduct } from "@/types/product";
 
-const productSchema = new mongoose.Schema<IProduct>(
+const productModel = new mongoose.Schema<IProduct>(
   {
     name: { type: String, required: true },
     description: { type: String, required: true },
@@ -20,4 +14,4 @@ const productSchema = new mongoose.Schema<IProduct>(
 );
 
 export const Product: Model<IProduct> =
-  mongoose.models.Product || mongoose.model<IProduct>("Product", productSchema);
+  mongoose.models.Product || mongoose.model<IProduct>("Product", productModel);
