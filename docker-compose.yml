@@ -20,9 +20,6 @@ services:
       - "3000:3000"
     volumes:
       - .:/app
-    environment:
-      MONGODB_USER: root
-      MONGODB_PASSWORD: password
 
 volumes:
   mongodb-data:
