@@ -21,6 +21,8 @@ services:
     volumes:
       - .:/app
     environment:
+      MONGODB_USER: root
+      MONGODB_PASSWORD: password
 
 volumes:
   mongodb-data:
