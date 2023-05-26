@@ -8,14 +8,14 @@ const LogoFont = PT_Sans_Caption({
 
 export const NavBar = () => {
   return (
-    <nav className="h-16 p-8 mb-4 flex flex-wrap md:flex-nowrap items-center dark:border-b dark:border-b-slate-500">
+    <nav className="md:h-16 p-4 md:p-8 mb-4 flex flex-wrap flex-col md:flex-row md:flex-nowrap items-center dark:border-b dark:border-b-slate-500">
       <p
         className={`${LogoFont.className} text-3xl md:mr-28 mb-4 md:mb-0 cursor-pointer`}
       >
         Genesis Bank Test
       </p>
 
-      <ul className="flex flex-wrap gap-5 md:flex-nowrap font-bold">
+      <ul className="font-bold flex flex-wrap gap-5 md:flex-nowrap mb-6 md:mb-0 ">
         <li>
           <Link href="/products/">Produtos</Link>
         </li>
@@ -24,7 +24,7 @@ export const NavBar = () => {
         </li>
       </ul>
 
-      <div className="ml-auto">
+      <div className="md:ml-auto">
         <p>by Flavio Marques</p>
       </div>
     </nav>
