@@ -18,7 +18,6 @@ export async function connect(): Promise<void> {
   });
 
   connection.isConnected = db.connections[0].readyState === 1;
-  console.log({ connection }, process.env.MONGODB_URI);
 }
 
 export async function disconnect(): Promise<void> {
