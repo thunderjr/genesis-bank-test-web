@@ -7,24 +7,34 @@ const LogoFont = PT_Sans_Caption({
 });
 
 export const NavBar = () => {
+  const navItems = [
+    {
+      name: "Produtos",
+      href: "/products",
+    },
+    {
+      name: "Novo Produto",
+      href: "/products/new",
+    },
+  ];
+
   return (
-    <nav className="md:h-16 p-4 md:p-8 mb-4 flex flex-wrap flex-col md:flex-row md:flex-nowrap items-center dark:border-b dark:border-b-slate-500">
+    <nav className="bg-black bg-opacity-30 backdrop-blur-2xl md:h-16 p-6 md:p-8 flex flex-wrap flex-col md:flex-row md:flex-nowrap items-center">
       <p
-        className={`${LogoFont.className} text-3xl md:mr-28 mb-4 md:mb-0 cursor-pointer`}
+        className={`${LogoFont.className} text-2xl md:mr-28 mb-4 md:mb-0 cursor-pointer`}
       >
         Genesis Bank Test
       </p>
 
-      <ul className="font-bold flex flex-wrap gap-5 md:flex-nowrap mb-6 md:mb-0 ">
-        <li>
-          <Link href="/products/">Produtos</Link>
-        </li>
-        <li>
-          <Link href="/products/new">Novo Produto</Link>
-        </li>
+      <ul className="text-lg font-bold flex flex-wrap md:gap-5 flex-col items-center md:items-start md:flex-row md:flex-nowrap">
+        {navItems.map(({ name, href }, i) => (
+          <li key={`nav-${i}`}>
+            <Link href={href}>{name}</Link>
+          </li>
+        ))}
       </ul>
 
-      <div className="md:ml-auto">
+      <div className="hidden md:block md:ml-auto">
         <p>by Flavio Marques</p>
       </div>
     </nav>
