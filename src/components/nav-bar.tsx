@@ -19,7 +19,7 @@ export const NavBar = () => {
   ];
 
   return (
-    <nav className="bg-black bg-opacity-30 backdrop-blur-2xl md:h-16 p-6 md:p-8 flex flex-wrap flex-col md:flex-row md:flex-nowrap items-center">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-10 backdrop-blur-3xl md:h-16 p-6 md:p-8 flex flex-wrap flex-col md:flex-row md:flex-nowrap items-center">
       <p
         className={`${LogoFont.className} text-2xl md:mr-28 mb-4 md:mb-0 cursor-pointer`}
       >
