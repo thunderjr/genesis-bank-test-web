@@ -9,7 +9,7 @@ import { NavBar } from "@/components/nav-bar";
 
 const MainFont = Inconsolata({
   subsets: ["latin"],
-  weight: "400",
+  weight: ["400", "700"],
 });
 
 export default function App({ Component, pageProps }: AppProps) {
