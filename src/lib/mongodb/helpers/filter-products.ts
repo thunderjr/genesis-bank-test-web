@@ -30,6 +30,7 @@ export const filterProducts = async (
       items: products,
     };
   } catch (error) {
+    console.error(error);
     throw new Error("Failed to filter products");
   }
 };

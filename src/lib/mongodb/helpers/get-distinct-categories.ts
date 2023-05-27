@@ -5,6 +5,7 @@ export const getDistinctCategories = async (): Promise<string[]> => {
     const categories = await Product.distinct("category");
     return categories;
   } catch (error) {
+    console.error(error);
     throw new Error("Failed to fetch distinct categories");
   }
 };
