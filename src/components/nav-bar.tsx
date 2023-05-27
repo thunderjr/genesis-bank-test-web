@@ -1,4 +1,5 @@
 import { PT_Sans_Caption } from "next/font/google";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -12,6 +13,7 @@ const LogoFont = PT_Sans_Caption({
 });
 
 export const NavBar = () => {
+  const [cartActive, setCartActive] = useState<boolean>(false);
   const { cartItems } = useCart();
 
   const navItems = [
@@ -24,6 +26,8 @@ export const NavBar = () => {
       href: "/products/new",
     },
   ];
+
+  const toggleCart = () => setCartActive((oldState) => !oldState);
 
   return (
     <nav className="md:fixed md:top-0 md:left-0 md:right-0 z-50 bg-black bg-opacity-20 backdrop-blur-3xl md:h-[68px] p-6 md:p-8 flex flex-wrap flex-col md:flex-row md:flex-nowrap items-center">
@@ -42,12 +46,14 @@ export const NavBar = () => {
       </ul>
 
       <div className="grid place-items-center relative ml-auto">
-        <Image className="invert" width={40} src={cartSvg} alt="Carrinho" />
-        <div className="bg-red-500 px-1 grid place-items-center rounded-full text-xs absolute right-2 bottom-4">
-          {cartItems.length}
+        <div onClick={toggleCart} className="cursor-pointer">
+          <Image className="invert" width={40} src={cartSvg} alt="Carrinho" />
+          <div className="bg-red-500 px-1 grid place-items-center rounded-full text-xs absolute right-3 bottom-4">
+            {cartItems.length}
+          </div>
+          <p className="text-xs">Carrinho</p>
         </div>
-        <p className="text-xs">Carrinho</p>
-        <CartModal />
+        <CartModal shown={cartActive} />
       </div>
     </nav>
   );
