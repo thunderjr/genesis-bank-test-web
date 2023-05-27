@@ -14,7 +14,7 @@ export const ProductSearchBox = ({ handleSearch }: Props) => {
   };
 
   return (
-    <div className="flex gap-4 mb-10 [&>*]:rounded-md [&>*]:px-4 [&>*]:py-2 ">
+    <div className="flex gap-4 mb-10 px-4 md:px-0 [&>*]:rounded-md [&>*]:px-4 [&>*]:py-2 ">
       <input
         name="search"
         type="text"
