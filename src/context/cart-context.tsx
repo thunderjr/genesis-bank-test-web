@@ -2,7 +2,7 @@ import { createContext, useContext, useState } from "react";
 
 import type { IProduct } from "@/types/product";
 
-type CartItem = {
+export type CartItem = {
   product: IProduct;
   quantity: number;
 };
@@ -29,21 +29,20 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   const addToCart = (product: IProduct, quantity: number) => {
     const existingItem = cartItems.find((item) => item.product === product);
 
-    console.log({ product });
-
     if (existingItem) {
-      setCartItems((prevItems) =>
-        prevItems.map((item) =>
-          item.product === product
-            ? { ...item, quantity: item.quantity + quantity }
-            : item
-        )
-      );
-    } else {
-      setCartItems((prevItems) => [
-        ...prevItems,
-        { product, quantity: quantity },
-      ]);
+      const newQuantity = existingItem.quantity + quantity;
+
+      if (newQuantity > 0) {
+        setCartItems((prevItems) =>
+          prevItems.map((item) =>
+            item.product === product ? { ...item, quantity: newQuantity } : item
+          )
+        );
+      } else {
+        removeFromCart(product);
+      }
+    } else if (quantity > 0) {
+      setCartItems((prevItems) => [...prevItems, { product, quantity }]);
     }
   };
 
