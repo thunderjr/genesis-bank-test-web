@@ -1,5 +1,10 @@
 import { PT_Sans_Caption } from "next/font/google";
+import Image from "next/image";
 import Link from "next/link";
+
+import { CartModal } from "@/components/cart-modal";
+import { useCart } from "@/context/cart-context";
+import cartSvg from "../../public/cart.svg";
 
 const LogoFont = PT_Sans_Caption({
   subsets: ["latin"],
@@ -7,6 +12,8 @@ const LogoFont = PT_Sans_Caption({
 });
 
 export const NavBar = () => {
+  const { cartItems } = useCart();
+
   const navItems = [
     {
       name: "Produtos",
@@ -19,7 +26,7 @@ export const NavBar = () => {
   ];
 
   return (
-    <nav className="md:fixed md:top-0 md:left-0 md:right-0 z-50 bg-black bg-opacity-10 backdrop-blur-3xl md:h-16 p-6 md:p-8 flex flex-wrap flex-col md:flex-row md:flex-nowrap items-center">
+    <nav className="md:fixed md:top-0 md:left-0 md:right-0 z-50 bg-black bg-opacity-20 backdrop-blur-3xl md:h-[68px] p-6 md:p-8 flex flex-wrap flex-col md:flex-row md:flex-nowrap items-center">
       <p
         className={`${LogoFont.className} text-2xl md:mr-28 mb-4 md:mb-0 cursor-pointer`}
       >
@@ -34,8 +41,13 @@ export const NavBar = () => {
         ))}
       </ul>
 
-      <div className="hidden md:block md:ml-auto">
-        <p>by Flavio Marques</p>
+      <div className="grid place-items-center relative ml-auto">
+        <Image className="invert" width={40} src={cartSvg} alt="Carrinho" />
+        <div className="bg-red-500 px-1 grid place-items-center rounded-full text-xs absolute right-2 bottom-4">
+          {cartItems.length}
+        </div>
+        <p className="text-xs">Carrinho</p>
+        <CartModal />
       </div>
     </nav>
   );
