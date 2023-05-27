@@ -12,7 +12,7 @@ export const ProductCard = ({ product }: { product: IProduct }) => {
   const hasImage = !!product.image?.length;
 
   return (
-    <div className="max-w-xs rounded overflow-hidden shadow-lg bg-white bg-opacity-60 backdrop-blur-3xl pb-6">
+    <div className="max-w-xs overflow-hidden shadow-lg bg-white bg-opacity-60 backdrop-blur-3xl pb-6">
       <Image
         priority
         className={`w-full h-36 ${

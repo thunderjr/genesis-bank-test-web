@@ -14,14 +14,14 @@ export const ProductSearchBox = ({ handleSearch }: Props) => {
   };
 
   return (
-    <div className="flex gap-4 mb-10 px-4 md:px-0 [&>*]:rounded-md [&>*]:px-4 [&>*]:py-2 ">
+    <div className="flex gap-4 mb-10 px-4 md:px-0 [&>*]:px-4 [&>*]:py-2 ">
       <input
-        name="search"
         type="text"
-        onChange={(e) => setName(e.target.value)}
+        name="search"
+        className="w-full"
         onKeyDown={handleEnterOnInput}
         placeholder="Pesquisar pelo nome..."
-        className="w-full"
+        onChange={(e) => setName(e.target.value)}
       />
       <button onClick={() => handleSearch(name)} className="bg-violet-950">
         Pesquisar

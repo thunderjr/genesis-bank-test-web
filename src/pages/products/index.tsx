@@ -49,7 +49,7 @@ export default function ProductsPage() {
 
   return (
     <main className="mt-12 md:mt-32 flex justify-center">
-      <section className="flex flex-col max-w-6xl md:w-5/6 px-8 md:p-8 rounded-lg md:bg-slate-700 md:backdrop-blur-md md:bg-opacity-40">
+      <section className="flex flex-col max-w-6xl md:w-5/6 px-8 md:p-8 md:bg-slate-700 md:backdrop-blur-md md:bg-opacity-40">
         {isLoading && <p>Carregando...</p>}
 
         <ProductSearchBox handleSearch={handleNameSearch} />

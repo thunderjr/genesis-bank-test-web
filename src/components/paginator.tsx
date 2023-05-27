@@ -21,7 +21,7 @@ export const Paginator = ({
           .fill(null)
           .map((_, i) => (
             <div
-              className={`px-3 rounded-lg bg-white bg-opacity-70 transition-all hover:bg-opacity-100 text-black cursor-pointer ${
+              className={`px-2 bg-white bg-opacity-70 transition-all hover:bg-opacity-100 text-black cursor-pointer ${
                 currentPage === i + 1 ? "font-bold" : ""
               }`}
               onClick={() => setPage(i + 1)}
