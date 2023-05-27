@@ -48,7 +48,7 @@ export default function ProductsPage() {
   }, [nameQuery, categoryQuery]);
 
   return (
-    <main className="mt-12 md:mt-32 flex justify-center">
+    <main className="mt-12 md:mt-48 flex justify-center">
       <section className="flex flex-col max-w-6xl md:w-5/6 px-8 md:p-8 md:bg-slate-700 md:backdrop-blur-md md:bg-opacity-40">
         {isLoading && <p>Carregando...</p>}
 
@@ -68,12 +68,14 @@ export default function ProductsPage() {
             ))}
         </div>
 
-        <Paginator
-          itemsPerPage={PRODUCTS_LIMIT}
-          total={data?.total!}
-          currentPage={page}
-          setPage={setPage}
-        />
+        {data && data.items && (
+          <Paginator
+            itemsPerPage={PRODUCTS_LIMIT}
+            total={data?.total!}
+            currentPage={page}
+            setPage={setPage}
+          />
+        )}
       </section>
     </main>
   );
