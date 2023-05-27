@@ -3,10 +3,16 @@ import type { Dispatch, SetStateAction } from "react";
 type Props = {
   setPage: Dispatch<SetStateAction<number>>;
   itemsPerPage: number;
+  currentPage: number;
   total: number;
 };
 
-export const Paginator = ({ itemsPerPage, setPage, total }: Props) => {
+export const Paginator = ({
+  currentPage,
+  itemsPerPage,
+  setPage,
+  total,
+}: Props) => {
   return (
     <div className="flex flex-col items-center">
       Página
@@ -15,7 +21,9 @@ export const Paginator = ({ itemsPerPage, setPage, total }: Props) => {
           .fill(null)
           .map((_, i) => (
             <div
-              className="px-3 rounded-lg bg-white bg-opacity-70 transition-all hover:bg-opacity-100 text-black cursor-pointer"
+              className={`px-3 rounded-lg bg-white bg-opacity-70 transition-all hover:bg-opacity-100 text-black cursor-pointer ${
+                currentPage === i + 1 ? "font-bold" : ""
+              }`}
               onClick={() => setPage(i + 1)}
               key={i}
             >
