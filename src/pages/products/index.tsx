@@ -6,6 +6,7 @@ import { ProductSearchBox } from "@/components/search-box";
 import { ProductCard } from "@/components/product-card";
 import { axiosFetcher } from "@/helpers/axios-fetcher";
 import { Paginator } from "@/components/paginator";
+import { CategoryFilterButtons } from "@/components/category-filter-buttons";
 
 type SearchParams = {
   page: number;
@@ -48,23 +49,17 @@ export default function ProductsPage() {
 
   return (
     <main className="mt-12 md:mt-32 flex justify-center">
-      <section className="max-w-6xl md:w-5/6 md:p-8 rounded-lg md:bg-slate-700 md:backdrop-blur-md md:bg-opacity-40">
+      <section className="flex flex-col max-w-6xl md:w-5/6 px-8 md:p-8 rounded-lg md:bg-slate-700 md:backdrop-blur-md md:bg-opacity-40">
         {isLoading && <p>Carregando...</p>}
 
         <ProductSearchBox handleSearch={handleNameSearch} />
 
-        <div className="mb-6">
-          {data &&
-            data.categories.map((category, i) => (
-              <span
-                key={`category-${i}`}
-                onClick={() => setCategoryQuery(category)}
-                className="inline-block cursor-pointer text-lg bg-white bg-opacity-50 rounded-full px-3 text-black mx-1"
-              >
-                {category}
-              </span>
-            ))}
-        </div>
+        {data && (
+          <CategoryFilterButtons
+            categories={data?.categories!}
+            handleSearch={setCategoryQuery}
+          />
+        )}
 
         <div className="flex flex-wrap justify-center gap-3 mb-6">
           {data &&
@@ -74,9 +69,10 @@ export default function ProductsPage() {
         </div>
 
         <Paginator
-          total={data?.total!}
-          setPage={setPage}
           itemsPerPage={PRODUCTS_LIMIT}
+          total={data?.total!}
+          currentPage={page}
+          setPage={setPage}
         />
       </section>
     </main>
