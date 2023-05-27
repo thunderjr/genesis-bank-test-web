@@ -3,8 +3,8 @@ import type { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
 import { connect, disconnect } from "@/lib/mongodb";
 
 interface MethodHandlers {
-  POST: NextApiHandler;
-  GET: NextApiHandler;
+  POST?: NextApiHandler;
+  GET?: NextApiHandler;
 }
 
 export const mongoDbRouteHandler =
@@ -13,12 +13,16 @@ export const mongoDbRouteHandler =
     try {
       await connect();
 
-      const data = await handlers[request.method as keyof MethodHandlers](
-        request,
-        response
-      );
+      if (request.method! in handlers) {
+        const data = await handlers[request.method as keyof MethodHandlers]!(
+          request,
+          response
+        );
 
-      return data;
+        return data;
+      }
+
+      return response.status(405).json({ message: "Method not allowed" });
     } finally {
       await disconnect();
     }
