@@ -37,3 +37,7 @@ input {
 .input-error {
   @apply text-pink-300 text-xs my-1
 }
+
+.bubble-arrow {
+  @apply w-0 h-0 border-l-[8px] border-l-transparent border-b-[10px] border-b-violet-950 border-r-[8px] border-r-transparent
+}
