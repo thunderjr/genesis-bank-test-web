@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+import { purchaseSchema } from "@/types/purchase";
+
 export const productSchema = z.object({
   _id: z.string().optional(),
   name: z.string().min(1, { message: "O nome é um campo obrigatório!" }),
@@ -25,6 +27,7 @@ export const productSchema = z.object({
   category: z
     .string()
     .min(1, { message: "É necessário especificar uma categoria!" }),
+  purchases: z.array(purchaseSchema).optional(),
 });
 
 export type IProduct = z.infer<typeof productSchema>;
