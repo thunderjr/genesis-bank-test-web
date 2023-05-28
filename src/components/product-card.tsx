@@ -41,6 +41,13 @@ export const ProductCard = ({ product }: Props) => {
       <div className="px-6 py-4">
         <div className="font-bold text-xl">{product.name}</div>
         <p className="opacity-50 text-base">{product.description}</p>
+        <p className="opacity-50 text-base">
+          {product.purchases?.length
+            ? `${product.purchases?.length} compra${
+                product.purchases?.length > 1 ? "s" : ""
+              }`
+            : "Nenhuma compra"}
+        </p>
       </div>
 
       <div className="px-6 text-sm font-semibold [&>*]:cursor-pointer">
