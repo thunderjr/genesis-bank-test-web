@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 export const productSchema = z.object({
+  _id: z.string().optional(),
   name: z.string().min(1, { message: "O nome é um campo obrigatório!" }),
   description: z
     .string()
