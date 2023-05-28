@@ -37,7 +37,9 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
       if (newQuantity > 0) {
         setCartItems((prevItems) =>
           prevItems.map((item) =>
-            item.product === product ? { ...item, quantity: newQuantity } : item
+            item.product._id === product._id
+              ? { ...item, quantity: newQuantity }
+              : item
           )
         );
       } else {
