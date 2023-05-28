@@ -4,6 +4,10 @@
 
 Este projeto é parte do processo seletivo para a vaga de desenvolvedor frontend na Genesis Bank. O objetivo deste projeto é implementar um mini ecommerce utilizando Next.js, com funcionalidades de criação, listagem/filtro e compra de produtos.
 
+## Link da aplicação
+
+[Hospedado na Vercel](https://genesis-bank-test-web.vercel.app/products)
+
 ## Tecnologias Utilizadas
 
 - Next.js
