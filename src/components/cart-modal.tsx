@@ -9,7 +9,7 @@ type Props = {
 
 export const CartModal = ({ shown }: Props) => {
   const [total, setTotal] = useState<number>(0);
-  const { cartItems, removeFromCart, clearCart } = useCart();
+  const { cartItems, removeFromCart, clearCart, submitCart } = useCart();
 
   useEffect(() => {
     const cartItemsSum = cartItems.reduce(
@@ -21,7 +21,7 @@ export const CartModal = ({ shown }: Props) => {
 
   return (
     <div
-      className={`absolute z-50 shadow-lg top-16 right-0 w-72 ${
+      className={`absolute z-50 shadow-lg top-16 right-0 w-96 ${
         !shown ? "hidden" : ""
       }`}
     >
@@ -55,16 +55,19 @@ export const CartModal = ({ shown }: Props) => {
               </div>
             ))}
 
-            <div className="flex my-4 border-t border-white px-4">
+            <div className="flex mt-4 mb-6 border-t border-white px-4">
               <span>{currencyFormat(total)}</span>
               <h3 className="ml-auto font-bold">Total</h3>
             </div>
 
             <div
               onClick={clearCart}
-              className="text-right cursor-pointer hover:underline"
+              className="flex flex-row justify-between cursor-pointer"
             >
-              Limpar carrinho
+              <span className="hover:underline">Limpar carrinho</span>
+              <button className="hover:underline" onClick={submitCart}>
+                Finalizar Compra
+              </button>
             </div>
           </>
         ) : (
